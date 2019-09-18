@@ -1,5 +1,5 @@
 # ESP32-benchmark
-Collection on benchmarks found on the web. FreeRTOS mainly, can have Arduino framework for ESP32 parts
+Collection on benchmarks found on the web. FreeRTOS mainly, will have Arduino framework ESP32 parts but the ultimate mission is to do it on the low level ESP-IDF FreeRTOS to get as much speed as we can and also to be able to compile it on the ESP32S2 that won't support Arduino ESP32 framework in the beginning.
 
 ## Mission
 
