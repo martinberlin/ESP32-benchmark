@@ -5,7 +5,7 @@ Collection on benchmarks found on the web. FreeRTOS mainly, can have Arduino fra
 
 Is to adapt Benchmarks found in the Web, perform tests in different ESP32's but also on the new ESP32S2
 
-Note that ESP32S2 should be compiled for now [https://esp32.com/viewtopic.php?p=49147#p49147](only with the ESP-IDF) Toolchain
+Note that ESP32S2 should be compiled for now [only with the ESP-IDF](https://esp32.com/viewtopic.php?p=49147#p49147) Toolchain
 
 ### Current results 
 
