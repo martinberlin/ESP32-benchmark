@@ -1261,10 +1261,8 @@ void speedTest(void)
 void setup()
 {
   Serial.begin(115200);
-  
   pinMode(9, OUTPUT);
   pinMode(10, INPUT);
-  
   Serial.println("Speed Test will begin momentarily.");
   Serial.println("");
  
