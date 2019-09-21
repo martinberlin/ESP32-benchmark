@@ -21,28 +21,12 @@
 
 static const char* TAG = "benchmark";
 
-static void periodic_timer_callback(void* arg)
-{
-    int64_t time_since_boot = esp_timer_get_time();
-    ESP_LOGI(TAG, "Periodic timer called, time since boot: %lld us", time_since_boot);
-}
 
 void app_main()
 {
 
-  const esp_timer_create_args_t periodic_timer_args = {
-          .callback = &periodic_timer_callback,
-          /* name is optional, but may help identify the timer when debugging */
-          .name = "periodic"
-  };
-
-  esp_timer_handle_t periodic_timer;
-  ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &periodic_timer));
-
   int64_t d, overhead;
   int64_t time_since_boot = esp_timer_get_time();
-
-   ESP_LOGI(TAG, "Boot time: %lld us", time_since_boot);
     /* Configure the IOMUX register for pad BLINK_GPIO (some pads are
        muxed to GPIO on reset already, but some default to other
        functions and need to be switched to GPIO. 
@@ -78,18 +62,19 @@ void app_main()
       gpio_get_level(10);       
       gpio_get_level(10);       
       gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);  
-      //vTaskDelay(1 / portTICK_PERIOD_MS);    
+      gpio_get_level(10);
+      gpio_get_level(10);
+      gpio_get_level(10);
+      gpio_get_level(10);
+      gpio_get_level(10);
     }
   }
   int64_t after = esp_timer_get_time();
   d = after-start;
   d /= 20.0;
-  ESP_LOGI(TAG, "digitalRead * 200000: %lld us", d);
+
+  ESP_LOGI(TAG, "Boot time: %lld us", time_since_boot);
+  ESP_LOGI(TAG, "GPIO_get_level * 200000: %lld us (digitalRead)", d);
 
   printf("End of test ------------\n"); 
   vTaskDelay(100 / portTICK_PERIOD_MS);
