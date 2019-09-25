@@ -47,26 +47,16 @@ void app_main()
   {
     for (int j=0; j<10000; j++)
     {
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);       
-      gpio_get_level(10);
-      gpio_get_level(10);
-      gpio_get_level(10);
-      gpio_get_level(10);
-      gpio_get_level(10);
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
+      gpio_get_level(BLINK_GPIO);       
     }
   }
   int64_t after = esp_timer_get_time();
@@ -75,6 +65,39 @@ void app_main()
 
   ESP_LOGI(TAG, "Boot time: %lld us", time_since_boot);
   ESP_LOGI(TAG, "GPIO_get_level * 200000: %lld us (digitalRead)", d);
+
+  start = esp_timer_get_time();
+
+  for (int i=0; i<2; i++)
+  {
+    for (int j=0; j<10000; j++)
+    {
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0);   
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+      gpio_set_level(BLINK_GPIO, 1); 
+      gpio_set_level(BLINK_GPIO, 0); 
+    }
+  }
+  after = esp_timer_get_time();
+  d = after-start;
+  d /= 20.0;
+  ESP_LOGI(TAG, "GPIO_set_level ON/OFF * 200000: %lld us (digitalWrite)", d);
 
   printf("End of test ------------\n"); 
   vTaskDelay(100 / portTICK_PERIOD_MS);
