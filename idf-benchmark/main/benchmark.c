@@ -61,7 +61,7 @@ void app_main()
   }
   int64_t after = esp_timer_get_time();
   d = after-start;
-  d /= 20.0;
+  d /= 10.0;
 
   ESP_LOGI(TAG, "Boot time: %lld us", time_since_boot);
   ESP_LOGI(TAG, "GPIO_get_level * 200000: %lld us (digitalRead)", d);
@@ -99,6 +99,43 @@ void app_main()
   d /= 20.0;
   ESP_LOGI(TAG, "GPIO_set_level ON/OFF * 200000: %lld us (digitalWrite)", d);
 
+
+  unsigned char c1,c2;
+  c1 = 2;
+  c2 = 3;
+start = esp_timer_get_time();
+
+  for (int i=0; i<20; i++)
+  {
+    for (int j=0; j<10000; j++)
+    {
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+      c1 *= c2;
+    }
+  }
+  after = esp_timer_get_time();
+  d = after-start;
+  d /= 20.0;
+  ESP_LOGI(TAG, "Multiply byte 200000*20: %lld us", d);
+
   printf("End of test ------------\n"); 
-  vTaskDelay(100 / portTICK_PERIOD_MS);
+  
 }
