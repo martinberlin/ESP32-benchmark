@@ -14,6 +14,10 @@
 #include "esp_log.h"
 #include "sdkconfig.h"
 #include "benchtests.c"
+#include "ssd1306.h"
+#include "ssd1306_draw.h"
+#include "ssd1306_font.h"
+#include "ssd1306_default_if.h"
 
 void app_main()
 {
