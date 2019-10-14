@@ -1,5 +1,6 @@
 .pio
 .vscode
+idf-benchmark/sdkconfig.h
 idf-benchmark/main/sdkconfig*
 idf-benchmark/build/
 idf-benchmark/sdkconfig.old
