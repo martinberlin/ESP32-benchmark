@@ -1,10 +1,8 @@
+#include "driver/gpio.h"
 
-/* Can run 'make menuconfig' to choose the GPIO to blink,
-   or you can edit the following line and set a number here.
-*/
 #define BLINK_GPIO CONFIG_BLINK_GPIO
 
-static const char* TAG = "benchmark";
+static const char* TAG2 = "benchmark-cpu";
 
 int64_t start;
 int64_t after;
@@ -51,8 +49,8 @@ void blink_test() {
   d = after-start;
   d /= 10.0;
 
-  ESP_LOGI(TAG, "Boot time: %lld us", time_since_boot);
-  ESP_LOGI(TAG, "GPIO_get_level * 200000: %lld us (digitalRead)", d);
+  ESP_LOGI(TAG2, "Boot time: %lld us", time_since_boot);
+  ESP_LOGI(TAG2, "GPIO_get_level * 200000: %lld us (digitalRead)", d);
 }
 
 void gpio_on_off() {
@@ -87,7 +85,7 @@ void gpio_on_off() {
   after = esp_timer_get_time();
   d = after-start;
   d /= 20.0;
-  ESP_LOGI(TAG, "GPIO_set_level ON/OFF * 200000: %lld us (digitalWrite)", d);
+  ESP_LOGI(TAG2, "GPIO_set_level ON/OFF * 200000: %lld us (digitalWrite)", d);
 
 }
 
@@ -126,5 +124,5 @@ start = esp_timer_get_time();
   after = esp_timer_get_time();
   d = after-start;
   d /= 20.0;
-  ESP_LOGI(TAG, "Multiply byte 200000*20: %lld us", d);
+  ESP_LOGI(TAG2, "Multiply byte 200000*20: %lld us", d);
 }
